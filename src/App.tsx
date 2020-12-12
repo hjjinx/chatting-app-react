@@ -11,7 +11,7 @@ import "./App.css";
 
 function App() {
   useEffect(() => {
-    const socket = io("localhost:8080", { port: 8080 });
+    const socket = io("localhost", { port: "8080" });
     socket.on("connect", () => {
       console.log(socket);
       socket.on("socket", console.log);
