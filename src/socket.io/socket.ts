@@ -11,7 +11,9 @@ class SocketService {
       store.dispatch({ type: "status/setSocketId", payload: this.socket.id });
       store.dispatch({ type: "status/setSocketState", payload: 1 });
     });
-    this.socket.on("room/list", (e: any) => console.log(e));
+    this.socket.on("room/list", (e: any) => {
+      store.dispatch({ type: "rooms/list", payload: e.rooms });
+    });
     this.socket.on("error/roomAlreadyExists", (e: any) => {
       store.dispatch({ type: "alert/error/roomAlreadyExists" });
       setTimeout(() => {

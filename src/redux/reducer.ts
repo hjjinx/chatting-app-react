@@ -37,6 +37,12 @@ export default function rootReducer(state = initialState, action: any) {
         status: { ...state.status, setSocketId: action.payload },
       };
 
+    case "rooms/list":
+      return {
+        ...state,
+        rooms: action.payload,
+      };
+
     case "alert/error/roomAlreadyExists":
       return {
         ...state,
