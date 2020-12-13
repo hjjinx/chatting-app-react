@@ -1,9 +1,9 @@
 import { Backdrop, CircularProgress } from "@material-ui/core";
 import * as React from "react";
 
-const LoadingSpinner = (props: any) => {
+const LoadingSpinner = () => {
   return (
-    <Backdrop open={props.show} style={{ zIndex: 1, color: "#fff" }}>
+    <Backdrop open={true} style={{ zIndex: 1, color: "#fff" }}>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

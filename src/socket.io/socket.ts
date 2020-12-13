@@ -32,6 +32,10 @@ class SocketService {
       store.dispatch({ type: "status/setCurrentRoom", payload: e.room });
       store.dispatch({ type: "status/switchLoader", payload: false });
     });
+
+    this.socket.on("room/newMemberJoined", (e: any) => {
+      store.dispatch({ type: "status/currentRoom/NewMember", payload: e });
+    });
   }
 }
 

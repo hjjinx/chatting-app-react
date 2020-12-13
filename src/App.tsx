@@ -7,6 +7,7 @@ import CreateRoomForm from "./components/CreateRoomForm";
 import RoomsList from "./components/RoomsList";
 import Alert from "./components/shared/Alert";
 import LoadingSpinner from "./components/shared/LoadingSpinner";
+import ChatPanel from "./components/ChatPanel";
 
 const App = () => {
   const state = useSelector((state: any) => state);
@@ -16,12 +17,14 @@ const App = () => {
   return (
     <div className="main">
       <Alert alertData={state.alertData}></Alert>
-      <LoadingSpinner show={state.status.loading}></LoadingSpinner>
+      {state.status.loading && <LoadingSpinner></LoadingSpinner>}
 
       <MainAppBar></MainAppBar>
 
       {state.status.currentRoom ? (
-        <></>
+        <>
+          <ChatPanel roomData={state.status.currentRoom}></ChatPanel>
+        </>
       ) : (
         <>
           <CreateRoomForm></CreateRoomForm>

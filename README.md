@@ -5,6 +5,7 @@ A simple chatting application which you to create public chatting rooms and invi
 - Front-end (React.js):
   - Material-ui
   - Socket.io client
+  - react-chat-ui
 - Server (Node.js):
   - Express server
   - Socket.io

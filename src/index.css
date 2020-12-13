@@ -66,3 +66,25 @@ code {
 .createRoomForm-createButton {
   margin-top: 20px !important;
 }
+
+.chatPanel {
+  display: flex;
+  flex-direction: row;
+}
+.chatPanel-leftPanel {
+  flex: 2;
+}
+.chatPanel-rightPanel {
+  display: flex;
+  flex: 5;
+  height: 75vh;
+  flex-direction: column;
+  border-left: 1px solid grey;
+  padding: 10px 5vw;
+}
+.chatPanel-chatSection {
+  flex: 7;
+}
+.chatPanel-inputSection {
+  flex: 1;
+}

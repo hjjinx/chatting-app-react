@@ -8,11 +8,11 @@ import alertReducer from "./alertReducer";
     WebSocket.CLOSING	    2
     WebSocket.CLOSED	    3
 */
-const IRoom: { name: "Test User 1"; status: { socketState: 1 } } | null = null;
+const ANY: any = null;
 
 export const initialState = {
   alertData: { type: "", text: "" },
-  status: { socketState: 3, socketId: "", loading: false, currentRoom: IRoom },
+  status: { socketState: 3, socketId: "", loading: false, currentRoom: ANY },
   rooms: [
     // {
     //   name: "Test Room",
