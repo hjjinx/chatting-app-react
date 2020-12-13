@@ -2,12 +2,12 @@ import { initialState } from ".";
 
 const alertReducer = (state: typeof initialState, action: any) => {
   switch (action.type) {
-    case "alert/error/roomAlreadyExists":
+    case "alert/error":
       return {
         ...state,
         alertData: {
           type: "error",
-          text: "Room Already Exists! Please choose another room name.",
+          text: action.payload,
         },
       };
     case "alert/clear":

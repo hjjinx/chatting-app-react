@@ -18,7 +18,11 @@ class SocketService {
       store.dispatch({ type: "rooms/list", payload: e.rooms });
     });
     this.socket.on("error/roomAlreadyExists", (e: any) => {
-      store.dispatch({ type: "alert/error/roomAlreadyExists" });
+      store.dispatch({
+        type: "alert/error",
+        payload: "Room Already Exists! Please choose another room name.",
+      });
+      store.dispatch({ type: "status/switchLoader", payload: false });
       setTimeout(() => {
         store.dispatch({ type: "alert/clear" });
       }, 2000);
@@ -26,6 +30,7 @@ class SocketService {
 
     this.socket.on("room/joined", (e: any) => {
       store.dispatch({ type: "status/setCurrentRoom", payload: e.room });
+      store.dispatch({ type: "status/switchLoader", payload: false });
     });
   }
 }

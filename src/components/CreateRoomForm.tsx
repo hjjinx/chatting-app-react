@@ -18,6 +18,18 @@ const CreateRoomForm = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const createRoom = () => {
+    if (name == "" || roomName == "") {
+      dispatch({
+        type: "alert/error",
+        payload: "Please enter both your name and room name",
+      });
+      setTimeout(() => {
+        dispatch({
+          type: "alert/clear",
+        });
+      }, 2000);
+      return;
+    }
     dispatch({ type: "status/switchLoader", payload: true });
     SocketService.socket.emit("room/create", { name, roomName });
   };
