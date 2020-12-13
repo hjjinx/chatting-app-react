@@ -6,6 +6,7 @@ import SocketService from "./socket.io/socket";
 import CreateRoomForm from "./components/CreateRoomForm";
 import RoomsList from "./components/RoomsList";
 import Alert from "./components/shared/Alert";
+import LoadingSpinner from "./components/shared/LoadingSpinner";
 
 const App = () => {
   const state = useSelector((state: any) => state);
@@ -15,9 +16,18 @@ const App = () => {
   return (
     <div className="main">
       <Alert alertData={state.alertData}></Alert>
+      <LoadingSpinner show={state.status.loading}></LoadingSpinner>
+
       <MainAppBar></MainAppBar>
-      <CreateRoomForm></CreateRoomForm>
-      <RoomsList></RoomsList>
+
+      {state.status.currentRoom ? (
+        <></>
+      ) : (
+        <>
+          <CreateRoomForm></CreateRoomForm>
+          <RoomsList></RoomsList>
+        </>
+      )}
     </div>
   );
 };

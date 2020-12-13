@@ -9,13 +9,16 @@ import {
   Typography,
 } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { useDispatch } from "react-redux";
 
 import SocketService from "../socket.io/socket";
 
 const CreateRoomForm = () => {
   const [roomName, setRoomName] = useState("");
   const [name, setName] = useState("");
+  const dispatch = useDispatch();
   const createRoom = () => {
+    dispatch({ type: "status/switchLoader", payload: true });
     SocketService.socket.emit("room/create", { name, roomName });
   };
   return (

@@ -12,6 +12,16 @@ const statusReducer = (state: typeof initialState, action: any) => {
         ...state,
         status: { ...state.status, setSocketId: action.payload },
       };
+    case "status/switchLoader":
+      return {
+        ...state,
+        status: { ...state.status, loading: action.payload },
+      };
+    case "status/setCurrentRoom":
+      return {
+        ...state,
+        status: { ...state.status, currentRoom: action.payload },
+      };
     default:
       return state;
   }

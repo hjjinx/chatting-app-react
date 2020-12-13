@@ -11,6 +11,9 @@ class SocketService {
       store.dispatch({ type: "status/setSocketId", payload: this.socket.id });
       store.dispatch({ type: "status/setSocketState", payload: 1 });
     });
+    this.socket.on("disconnect", () => {
+      store.dispatch({ type: "status/setSocketState", payload: 3 });
+    });
     this.socket.on("room/list", (e: any) => {
       store.dispatch({ type: "rooms/list", payload: e.rooms });
     });
@@ -19,6 +22,10 @@ class SocketService {
       setTimeout(() => {
         store.dispatch({ type: "alert/clear" });
       }, 2000);
+    });
+
+    this.socket.on("room/joined", (e: any) => {
+      store.dispatch({ type: "status/setCurrentRoom", payload: e.room });
     });
   }
 }
