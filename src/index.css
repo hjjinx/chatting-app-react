@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: aliceblue;
+}
+
+.createRoomForm {
+  margin: 25px 10vw;
+  text-align: center;
+  padding: 25px;
+}
+
+.createRoomForm-formControl {
+  width: 75%;
+}
+
+.createRoomForm-heading {
+  margin: 0.1em;
+}
