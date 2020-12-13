@@ -1,10 +1,13 @@
+import roomReducer from "./roomReducer";
+import statusReducer from "./statusReducer";
+
 /*  WebSocket States:
     WebSocket.CONNECTING	0
     WebSocket.OPEN	        1
     WebSocket.CLOSING	    2
     WebSocket.CLOSED	    3
 */
-const initialState = {
+export const initialState = {
   alertData: { type: "", text: "" },
   status: { socketState: 3, socketId: "" },
   rooms: [
@@ -25,39 +28,8 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action: any) {
-  switch (action.type) {
-    case "status/setSocketState":
-      return {
-        ...state,
-        status: { ...state.status, socketState: action.payload },
-      };
-    case "status/setSocketId":
-      return {
-        ...state,
-        status: { ...state.status, setSocketId: action.payload },
-      };
-
-    case "rooms/list":
-      return {
-        ...state,
-        rooms: action.payload,
-      };
-
-    case "alert/error/roomAlreadyExists":
-      return {
-        ...state,
-        alertData: {
-          type: "error",
-          text: "Room Already Exists! Please choose another room name.",
-        },
-      };
-    case "alert/clear":
-      return {
-        ...state,
-        alertData: { type: "", text: "" },
-      };
-
-    default:
-      return state;
-  }
+  if (action.type.startsWith("status")) return statusReducer(state, action);
+  else if (action.type.startsWith("rooms")) return roomReducer(state, action);
+  else if (action.type.startsWith("alert")) return roomReducer(state, action);
+  else return state;
 }

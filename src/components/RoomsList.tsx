@@ -17,7 +17,6 @@ import SocketService from "../socket.io/socket";
 
 const RoomsList = () => {
   const state = useSelector((state: any) => state);
-  console.log(state.rooms);
   useEffect(() => {
     let getRoomsInterval = setInterval(() => {
       SocketService.socket?.emit("GET_room/list");
