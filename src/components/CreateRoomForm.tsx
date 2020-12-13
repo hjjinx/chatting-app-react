@@ -1,20 +1,23 @@
-import classes from "*.module.css";
+import * as React from "react";
+import { useState } from "react";
 import {
   Button,
   FormControl,
-  FormGroup,
   FormHelperText,
-  Icon,
-  Input,
-  InputLabel,
   Paper,
   TextField,
   Typography,
 } from "@material-ui/core";
-import * as React from "react";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 
+import SocketService from "../socket.io/socket";
+
 const CreateRoomForm = () => {
+  const [roomName, setRoomName] = useState("");
+  const [name, setName] = useState("");
+  const createRoom = () => {
+    SocketService.socket.emit("room/create", { name, roomName });
+  };
   return (
     <Paper elevation={3} className="createRoomForm">
       <Typography variant="h4" gutterBottom>
@@ -22,12 +25,22 @@ const CreateRoomForm = () => {
       </Typography>
       {/* <h2 className="createRoomForm-heading"></h2> */}
       <FormControl className="createRoomForm-formControl">
-        <TextField id="createRoomForm-name" label="Your Name" />
+        <TextField
+          id="createRoomForm-name"
+          label="Your Name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
         <FormHelperText id="createRoomForm-nameHelper">
           Your name will be displayed to everyone that is in the same room as
           you.
         </FormHelperText>
-        <TextField id="createRoomForm-room" label="Room Name" />
+        <TextField
+          id="createRoomForm-room"
+          label="Room Name"
+          value={roomName}
+          onChange={(e) => setRoomName(e.target.value)}
+        />
         <FormHelperText id="createRoomForm-roomHelper">
           Room name will be displayed in the 'Join a Room' section
         </FormHelperText>
@@ -36,6 +49,7 @@ const CreateRoomForm = () => {
           color="primary"
           className={"createRoomForm-createButton"}
           endIcon={<AddCircleIcon />}
+          onClick={createRoom}
         >
           Create
         </Button>
