@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   Avatar,
@@ -13,10 +13,18 @@ import {
 } from "@material-ui/core";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
-import DeleteIcon from "@material-ui/icons/Delete";
+import SocketService from "../socket.io/socket";
 
 const RoomsList = () => {
   const state = useSelector((state: any) => state);
+  useEffect(() => {
+    let getRoomsInterval = setInterval(() => {
+      SocketService.socket?.emit("GET_room/list");
+    }, 1000);
+    return () => {
+      clearInterval(getRoomsInterval);
+    };
+  }, []);
   const renderListItem = (room: any) => (
     <div className="joinRoomForm-listItem">
       <ListItem divider={true}>

@@ -5,7 +5,8 @@
     WebSocket.CLOSED	    3
 */
 const initialState = {
-  status: { socketState: 3 },
+  alertData: { type: "", text: "" },
+  status: { socketState: 3, socketId: "" },
   rooms: [
     // {
     //   name: "Test Room",
@@ -30,6 +31,26 @@ export default function rootReducer(state = initialState, action: any) {
         ...state,
         status: { ...state.status, socketState: action.payload },
       };
+    case "status/setSocketId":
+      return {
+        ...state,
+        status: { ...state.status, setSocketId: action.payload },
+      };
+
+    case "alert/error/roomAlreadyExists":
+      return {
+        ...state,
+        alertData: {
+          type: "error",
+          text: "Room Already Exists! Please choose another room name.",
+        },
+      };
+    case "alert/clear":
+      return {
+        ...state,
+        alertData: { type: "", text: "" },
+      };
+
     default:
       return state;
   }

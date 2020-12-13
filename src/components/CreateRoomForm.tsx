@@ -23,7 +23,6 @@ const CreateRoomForm = () => {
       <Typography variant="h4" gutterBottom>
         Create a New Chat Room
       </Typography>
-      {/* <h2 className="createRoomForm-heading"></h2> */}
       <FormControl className="createRoomForm-formControl">
         <TextField
           id="createRoomForm-name"
@@ -36,6 +35,7 @@ const CreateRoomForm = () => {
           you.
         </FormHelperText>
         <TextField
+          style={{ marginTop: 10 }}
           id="createRoomForm-room"
           label="Room Name"
           value={roomName}
