@@ -1,3 +1,20 @@
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+  background-color: aliceblue;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: aliceblue;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 1px solid aliceblue;
+  border-left: 1px solid aliceblue;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -13,15 +30,12 @@ code {
 }
 
 .main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: aliceblue;
 }
 
-.createRoomForm {
+.createRoomForm,
+.joinRoomForm {
   margin: 25px 10vw;
   text-align: center;
   padding: 25px;
@@ -33,4 +47,23 @@ code {
 
 .createRoomForm-heading {
   margin: 0.1em;
+}
+
+.joinRoomForm-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.joinRoomForm-listItem {
+  width: 75%;
+}
+
+.ListItem-MuiListItemText-secondary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.createRoomForm-createButton {
+  margin-top: 20px !important;
 }

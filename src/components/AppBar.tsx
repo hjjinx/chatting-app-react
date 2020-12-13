@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import ConnectionState from "./shared/ConnectionState";
 
 const MainAppBar = () => {
-  const state = useSelector((state: any) => state);
   return (
     <AppBar position="static">
       <Toolbar>

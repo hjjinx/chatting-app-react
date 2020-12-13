@@ -1,18 +1,26 @@
+import classes from "*.module.css";
 import {
+  Button,
   FormControl,
   FormGroup,
   FormHelperText,
+  Icon,
   Input,
   InputLabel,
   Paper,
   TextField,
+  Typography,
 } from "@material-ui/core";
 import * as React from "react";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const CreateRoomForm = () => {
   return (
     <Paper elevation={3} className="createRoomForm">
-      <h2 className="createRoomForm-heading">Create a New Chat Room</h2>
+      <Typography variant="h4" gutterBottom>
+        Create a New Chat Room
+      </Typography>
+      {/* <h2 className="createRoomForm-heading"></h2> */}
       <FormControl className="createRoomForm-formControl">
         <TextField id="createRoomForm-name" label="Your Name" />
         <FormHelperText id="createRoomForm-nameHelper">
@@ -23,6 +31,14 @@ const CreateRoomForm = () => {
         <FormHelperText id="createRoomForm-roomHelper">
           Room name will be displayed in the 'Join a Room' section
         </FormHelperText>
+        <Button
+          variant="contained"
+          color="primary"
+          className={"createRoomForm-createButton"}
+          endIcon={<AddCircleIcon />}
+        >
+          Create
+        </Button>
       </FormControl>
     </Paper>
   );

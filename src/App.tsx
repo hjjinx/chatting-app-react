@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import MainAppBar from "./components/AppBar";
 import setUpSocketListeners from "./socket.io/socket";
 import CreateRoomForm from "./components/CreateRoomForm";
+import RoomsList from "./components/RoomsList";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
     <div className="main">
       <MainAppBar></MainAppBar>
       <CreateRoomForm></CreateRoomForm>
+      <RoomsList></RoomsList>
     </div>
   );
 };

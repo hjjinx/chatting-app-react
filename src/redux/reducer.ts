@@ -6,6 +6,21 @@
 */
 const initialState = {
   status: { socketState: 3 },
+  rooms: [
+    // {
+    //   name: "Test Room",
+    //   participants: [
+    //     { name: "Test User 1", status: { socketState: 1 } },
+    //     { name: "Test User 2", status: { socketState: 1 } },
+    //     { name: "Test User 3", status: { socketState: 1 } },
+    //     { name: "Test User 4", status: { socketState: 1 } },
+    //     { name: "Test User 4", status: { socketState: 1 } },
+    //     { name: "Test User 4", status: { socketState: 1 } },
+    //     { name: "Test User 4", status: { socketState: 1 } },
+    //   ],
+    //   messages: [{ text: "Hi!", timestamp: new Date() }],
+    // },
+  ],
 };
 
 export default function rootReducer(state = initialState, action: any) {
