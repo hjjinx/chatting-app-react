@@ -1,5 +1,6 @@
 import roomReducer from "./roomReducer";
 import statusReducer from "./statusReducer";
+import alertReducer from "./alertReducer";
 
 /*  WebSocket States:
     WebSocket.CONNECTING	0
@@ -30,6 +31,6 @@ export const initialState = {
 export default function rootReducer(state = initialState, action: any) {
   if (action.type.startsWith("status")) return statusReducer(state, action);
   else if (action.type.startsWith("rooms")) return roomReducer(state, action);
-  else if (action.type.startsWith("alert")) return roomReducer(state, action);
+  else if (action.type.startsWith("alert")) return alertReducer(state, action);
   else return state;
 }
