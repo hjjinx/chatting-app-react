@@ -1,17 +1,33 @@
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
   background-color: aliceblue;
   box-shadow: -5px 10px #888888;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 10px;
   background-color: aliceblue;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background-color: #3f51b5;
   border-radius: 5px;
+}
+
+.chatPanel-chatSection::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3); */
+  /* background-color: aliceblue; */
+  /* box-shadow: -5px 10px #888888; */
+}
+
+.chatPanel-chatSection::-webkit-scrollbar {
+  width: 7px;
+  /* background-color: aliceblue; */
+}
+
+.chatPanel-chatSection::-webkit-scrollbar-thumb {
+  background-color: #3f51b5;
+  border-radius: 0;
 }
 
 body {
@@ -70,6 +86,9 @@ code {
 .chatPanel {
   display: flex;
   flex-direction: row;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 0 15px;
 }
 .chatPanel-leftPanel {
   flex: 2;
@@ -79,12 +98,21 @@ code {
   flex: 5;
   height: 75vh;
   flex-direction: column;
-  border-left: 1px solid grey;
-  padding: 10px 5vw;
+  border-left: 1px solid #ccc;
+  /* padding: 10px 5vw; */
 }
 .chatPanel-chatSection {
   flex: 7;
+  overflow: auto;
+  padding: 0 15px;
 }
 .chatPanel-inputSection {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth {
+  margin: auto;
 }

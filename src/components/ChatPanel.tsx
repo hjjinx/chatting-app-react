@@ -17,6 +17,9 @@ const ChatPanel = (props: any) => {
   const [input, setInput] = useState("");
   const sendMessage = (e: any) => {
     if (e.key == "Enter") {
+      if (input == "") {
+        return;
+      }
       SocketService.socket.emit("room/newMessage", {
         text: input,
         id: state.status.currentRoom.name,
@@ -49,7 +52,7 @@ const ChatPanel = (props: any) => {
                       }}
                     />
                   </ListItemIcon>
-                  <ListItemText primary={x.name} secondary={"Secondary text"} />
+                  <ListItemText primary={x.name} secondary={"Online"} />
                 </ListItem>
               );
             })}
