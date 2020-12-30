@@ -39,6 +39,13 @@ class SocketService {
         payload: e,
       });
     });
+
+    this.socket.on("room/messagesUpdate", (e: any) => {
+      store.dispatch({
+        type: "status/currentRoom/setMessages",
+        payload: e,
+      });
+    });
   }
 }
 

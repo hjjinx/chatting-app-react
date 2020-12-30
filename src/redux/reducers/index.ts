@@ -25,7 +25,7 @@ export const initialState = {
     //     { name: "Test User 4", status: { socketState: 1 } },
     //     { name: "Test User 4", status: { socketState: 1 } },
     //   ],
-    //   messages: [{ text: "Hi!", timestamp: new Date() }],
+    //   messages: [{ text: "Hi!", timestamp: `new Date()`, sender: `socket.id`, id : int}],
     // },
   ],
 };

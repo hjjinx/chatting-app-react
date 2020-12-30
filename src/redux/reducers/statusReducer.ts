@@ -10,7 +10,7 @@ const statusReducer = (state: typeof initialState, action: any) => {
     case "status/setSocketId":
       return {
         ...state,
-        status: { ...state.status, setSocketId: action.payload },
+        status: { ...state.status, socketId: action.payload },
       };
     case "status/switchLoader":
       return {
@@ -30,6 +30,17 @@ const statusReducer = (state: typeof initialState, action: any) => {
           currentRoom: {
             ...state.status.currentRoom,
             participants: action.payload,
+          },
+        },
+      };
+    case "status/currentRoom/setMessages":
+      return {
+        ...state,
+        status: {
+          ...state.status,
+          currentRoom: {
+            ...state.status.currentRoom,
+            messages: action.payload,
           },
         },
       };

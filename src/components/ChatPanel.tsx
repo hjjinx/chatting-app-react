@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { ChatFeed, Message } from "react-chat-ui";
 import {
   List,
@@ -9,12 +10,19 @@ import {
   TextField,
 } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
+import SocketService from "../socket.io/socket";
 
 const ChatPanel = (props: any) => {
+  const state = useSelector((state: any) => state);
   const [input, setInput] = useState("");
   const sendMessage = (e: any) => {
     if (e.key == "Enter") {
-      console.log("Sending the message: " + input);
+      SocketService.socket.emit("room/newMessage", {
+        text: input,
+        id: state.status.currentRoom.name,
+        timestamp: new Date(),
+      });
+      setInput("");
     }
   };
   return (
@@ -50,13 +58,13 @@ const ChatPanel = (props: any) => {
         <div className="chatPanel-rightPanel">
           <div className="chatPanel-chatSection">
             <ChatFeed
-              messages={[
-                new Message({
-                  id: 1,
-                  message: "I'm the recipient! (The person you're talking to)",
-                }), // Gray bubble
-                new Message({ id: 0, message: "I'm you -- the blue bubble!" }),
-              ]}
+              messages={state.status.currentRoom.messages.map(
+                (x: any) =>
+                  new Message({
+                    id: x.sender == state.status.socketId ? 0 : 1,
+                    message: x.text,
+                  })
+              )}
             ></ChatFeed>
           </div>
           <div className="chatPanel-inputSection">
