@@ -22,17 +22,14 @@ const statusReducer = (state: typeof initialState, action: any) => {
         ...state,
         status: { ...state.status, currentRoom: action.payload },
       };
-    case "status/currentRoom/NewMember":
+    case "status/currentRoom/setParticipants":
       return {
         ...state,
         status: {
           ...state.status,
           currentRoom: {
             ...state.status.currentRoom,
-            participants: [
-              ...state.status.currentRoom!.participants,
-              { name: action.payload, status: 1 },
-            ],
+            participants: action.payload,
           },
         },
       };

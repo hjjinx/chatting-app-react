@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ChatFeed, Message } from "react-chat-ui";
 import {
   List,
@@ -6,19 +6,17 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  TextField,
 } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 
-const getPersonIconColor = (x: string) => {
-  x = x.toLowerCase();
-  let total = 0;
-  for (let char of x) {
-    total += char.charCodeAt(0);
-  }
-  return `hsl(${total}, 50%, 50%)`;
-};
-
 const ChatPanel = (props: any) => {
+  const [input, setInput] = useState("");
+  const sendMessage = (e: any) => {
+    if (e.key == "Enter") {
+      console.log("Sending the message: " + input);
+    }
+  };
   return (
     <div>
       <div className="chatPanel">
@@ -37,7 +35,7 @@ const ChatPanel = (props: any) => {
                   <ListItemIcon>
                     <PersonIcon
                       style={{
-                        fill: getPersonIconColor(x.name),
+                        fill: x.color,
                         width: 27,
                         height: "auto",
                       }}
@@ -61,7 +59,16 @@ const ChatPanel = (props: any) => {
               ]}
             ></ChatFeed>
           </div>
-          <div className="chatPanel-inputSection">{/* <input></input> */}</div>
+          <div className="chatPanel-inputSection">
+            <TextField
+              id="standard-basic"
+              placeholder="Type a Message"
+              fullWidth
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              onKeyDown={sendMessage}
+            />
+          </div>
         </div>
       </div>
     </div>
