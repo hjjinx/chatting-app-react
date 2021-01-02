@@ -5,7 +5,10 @@ import store from "../redux/store";
 class SocketService {
   static socket: Socket;
   static registerSocketServerListeners() {
-    this.socket = io("localhost:8080", { port: "8080" });
+    this.socket = io("https://hjjinx.live", {
+      port: "80",
+      path: "/api/chat-app/",
+    });
     store.dispatch({ type: "status/setSocketState", payload: 0 });
     this.socket.on("connect", () => {
       store.dispatch({ type: "status/setSocketId", payload: this.socket.id });
