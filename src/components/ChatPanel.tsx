@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ChatFeed, Message } from "react-chat-ui";
 import {
@@ -17,9 +17,8 @@ const ChatPanel = (props: any) => {
   const [input, setInput] = useState("");
   const sendMessage = (e: any) => {
     if (e.key == "Enter") {
-      if (input == "") {
-        return;
-      }
+      if (input == "") return;
+
       SocketService.socket.emit("room/newMessage", {
         text: input,
         id: state.status.currentRoom.name,
@@ -28,17 +27,22 @@ const ChatPanel = (props: any) => {
       setInput("");
     }
   };
+
+  useEffect(() => {
+    document.getElementById("chat-panel")?.scrollIntoView(false);
+  }, [state.status.currentRoom.messages]);
+
   return (
     <div>
       <div className="chatPanel">
         <div className="chatPanel-leftPanel">
           <Typography
             variant="h5"
-            gutterBottom
             style={{ margin: "10px auto 5px", textAlign: "center" }}
           >
-            Participants
+            {props.roomData.participants.length} Participants
           </Typography>
+          <span className="chatPanel-participantList-divider"></span>
           <List className="chatPanel-participantList">
             {props.roomData.participants.map((x: any, i: number) => {
               return (

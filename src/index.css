@@ -81,9 +81,9 @@ code {
 .chatPanel {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 5vh 5vw;
   border: 1px solid #ccc;
-  padding: 0 15px;
+  box-shadow: 0px 0px 20px 1px #3f51b5;
 }
 .chatPanel-leftPanel {
   flex: 2;
@@ -91,7 +91,7 @@ code {
 .chatPanel-rightPanel {
   display: flex;
   flex: 5;
-  height: 75vh;
+  height: 80vh;
   flex-direction: column;
   border-left: 1px solid #ccc;
   /* padding: 10px 5vw; */
@@ -105,11 +105,14 @@ code {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth {
   margin: auto;
+}
+.chatPanel-participantList > li:hover {
+  background: #eee;
 }
 
 @media (max-width: 768px) {
@@ -124,9 +127,13 @@ code {
   .chatPanel {
     flex-direction: column;
     border: none;
+    margin: 5px;
+    box-shadow: none;
+    padding: 0;
   }
   .chatPanel-leftPanel {
     border: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
   }
   .chatPanel-rightPanel {
     border: 1px solid #ccc;
@@ -136,5 +143,15 @@ code {
   .chatPanel-participantList {
     max-height: 10vh;
     overflow: auto;
+  }
+  .chatPanel-participantList-divider {
+    width: 90%;
+    height: 0;
+    display: block;
+    margin: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  .MuiList-padding {
+    padding-top: 0;
   }
 }
