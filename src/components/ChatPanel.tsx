@@ -39,7 +39,7 @@ const ChatPanel = (props: any) => {
           >
             Participants
           </Typography>
-          <List>
+          <List className="chatPanel-participantList">
             {props.roomData.participants.map((x: any, i: number) => {
               return (
                 <ListItem>
