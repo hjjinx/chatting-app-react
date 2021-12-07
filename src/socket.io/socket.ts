@@ -1,13 +1,14 @@
 import { Socket } from "socket.io-client";
 import { io } from "socket.io-client";
 import store from "../redux/store";
-
+import {serverURI} from '../env.json';
 class SocketService {
   static socket: Socket;
   static registerSocketServerListeners() {
-    this.socket = io("https://hjjinx.live", {
-      port: "80",
-      path: "/api/chat-app/",
+    this.socket = io(serverURI, {
+      port: "8080",
+      // port: "80",
+      // path: "/api/chat-app/",
     });
     store.dispatch({ type: "status/setSocketState", payload: 0 });
     this.socket.on("connect", () => {
